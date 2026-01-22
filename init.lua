@@ -142,7 +142,7 @@ vim.api.nvim_create_user_command('NvimPush', function()
 
   -- Concatenate git commands
   -- We use 'git commit -m' followed by the message
-  local cmd = string.format('cd %s && git add . && git commit -m %s && git push origin main', config_dir, commit_msg)
+  local cmd = string.format('cd %s && git add . && git commit -m %s && git push origin main --force', config_dir, commit_msg)
 
   print 'Pushing config...'
 
