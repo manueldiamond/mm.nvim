@@ -135,6 +135,30 @@ vim.keymap.set('n', '<leader><CR>', function()
   end
 end, { desc = 'Git add, commit, and push' })
 
+vim.api.nvim_create_user_command('NvimPush', function()
+  local timestamp = os.date '%Y-%m-%d %H:%M:%S'
+  local commit_msg = string.format("'Backup: %s'", timestamp)
+  local config_dir = vim.fn.expand '~/.config/nvim'
+
+  -- Concatenate git commands
+  -- We use 'git commit -m' followed by the message
+  local cmd = string.format('cd %s && git add . && git commit -m %s && git push origin main', config_dir, commit_msg)
+
+  print 'Pushing config...'
+
+  -- Run asynchronously
+  vim.fn.jobstart(cmd, {
+    on_exit = function(_, exit_code)
+      if exit_code == 0 then
+        vim.notify('Nvim config pushed: ' .. timestamp, vim.log.levels.INFO)
+      else
+        vim.notify('Push failed (check if there are changes to commit)', vim.log.levels.WARN)
+      end
+    end,
+  })
+end, { desc = 'Backup Neovim config to Git with timestamp' })
+
+--
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
