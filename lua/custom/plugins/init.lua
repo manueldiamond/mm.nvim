@@ -4,12 +4,6 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    'kylechui/nvim-surround',
-    version = '*',
-    event = 'VeryLazy',
-    config = true,
-  },
-  {
     'supermaven-inc/supermaven-nvim',
     config = function()
       require('supermaven-nvim').setup {
