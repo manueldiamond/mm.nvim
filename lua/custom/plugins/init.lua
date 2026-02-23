@@ -21,6 +21,7 @@ return {
       require('typescript-tools').setup(opts)
     end,
   },
+  --[[
   {
     'ThePrimeagen/99',
     config = function()
@@ -111,4 +112,5 @@ return {
       end)
     end,
   },
+  ]]
 }
