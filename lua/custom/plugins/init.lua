@@ -21,6 +21,17 @@ return {
       require('typescript-tools').setup(opts)
     end,
   },
+  {
+    'antosha417/nvim-lsp-file-operations',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-tree.lua' },
+  },
+  -- better file manager
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require('oil').setup()
+    end,
+  },
   --[[
   {
     'ThePrimeagen/99',

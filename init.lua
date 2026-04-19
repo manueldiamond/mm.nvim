@@ -120,7 +120,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ Basic MM MODIFICATIONS ]]
 
-vim.keymap.set('n', '<C-O>', function()
+vim.keymap.set('n', '<leader>oo', ':TSToolsOrganizeImports<CR>', { desc = 'Organize imports' })
+
+vim.keymap.set('n', '|', '<cmd>Oil<CR>')
+vim.keymap.set('n', '<C-f>', function()
   local path = vim.fn.expand '%:p:h'
   if vim.fn.has 'mac' == 1 then
     vim.fn.system { 'open', path }
